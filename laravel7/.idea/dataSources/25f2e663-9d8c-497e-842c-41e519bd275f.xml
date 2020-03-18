@@ -1185,13 +1185,13 @@
     </column>
     <column id="293" parent="280" name="first_hand">
       <Position>3</Position>
-      <DataType>varchar(255)|0s</DataType>
+      <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="294" parent="280" name="second_hand">
       <Position>4</Position>
-      <DataType>varchar(255)|0s</DataType>
+      <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
