@@ -16,8 +16,8 @@ class CreateHandRangesTable extends Migration
         Schema::create('hand_ranges', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->integer('first_hand');
-            $table->integer('second_hand');
+            $table->enum('first_hand',['A','2','3','4','5','6','7','8','9','10','J','Q','K']);
+            $table->enum('second_hand',['A','2','3','4','5','6','7','8','9','10','J','Q','K']);
             $table->enum('action',['fold','call','raise','re_raise']);
             $table->boolean('suited');
             $table->timestamps();
