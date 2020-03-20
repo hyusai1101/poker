@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  * Class CommonModel
  * @package App\Models
  */
-class CommonModel extends Model
+abstract class CommonModel extends Model
 {
     //
 }

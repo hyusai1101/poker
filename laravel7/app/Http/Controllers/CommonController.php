@@ -12,7 +12,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
  * Class CommonController
  * @package App\Http\Controllers
  */
-class CommonController extends Controller
+abstract class CommonController extends Controller
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 }
