@@ -2,9 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 
-class TableType extends Model
+/**
+ * Class TableType
+ * @package App\Models
+ * @property string $name
+ */
+class TableType extends CommonModel
 {
-    //
+    protected $fillable = ['name'];
 }
