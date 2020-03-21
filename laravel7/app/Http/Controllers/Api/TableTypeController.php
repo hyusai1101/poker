@@ -40,7 +40,7 @@ class TableTypeController extends CommonController
     {
         $tableTypeModel = $tableType->find($tableTypeId);
         if (empty($tableTypeModel)) {
-            throw new RuntimeException('not fount tableType', 400);
+            throw new RuntimeException('not found tableType', 400);
         }
         return $tableTypeModel;
     }

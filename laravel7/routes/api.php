@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['namespace' => 'api'],function (){
-    Route::get('/tableType','TableTypeController@index');
-    Route::get('/tableType/{tableTypeId}','TableTypeController@show');
+    Route::get('/tableTypes','TableTypeController@index');
+    Route::get('/tableTypes/{tableTypeId}','TableTypeController@show');
+
+    Route::get('/positions','PositionController@index');
+    Route::get('/positions/{positionId}','PositionController@show');
 });
