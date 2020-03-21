@@ -2,12 +2,17 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 /**
  * モデルの共通処理
  * Class CommonModel
+ *
+ * @mixin Builder
+ * @mixin Collection
  * @package App\Models
  */
 abstract class CommonModel extends Model
@@ -39,6 +44,7 @@ abstract class CommonModel extends Model
         }
         return parent::setAttribute($key, $value);
     }
+
     public function toArray()
     {
         $baseArray = parent::toArray();
