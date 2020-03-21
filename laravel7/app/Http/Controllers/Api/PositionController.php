@@ -18,7 +18,6 @@ class PositionController extends CommonController
             ->addData($position->all())->format());
     }
 
-
     /**
      * @param $positionId
      * @param Position $position

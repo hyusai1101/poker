@@ -20,4 +20,7 @@ Route::group(['namespace' => 'api'],function (){
 
     Route::get('/positions','PositionController@index');
     Route::get('/positions/{positionId}','PositionController@show');
+
+    Route::get('/handRanges','handRangeController@index');
+    Route::put('/handRanges','handRangeController@update');
 });
