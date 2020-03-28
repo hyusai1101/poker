@@ -5,7 +5,6 @@
   export default {
     name: "PokerTable",
   }
-
 </script>
 
 <style scoped>
@@ -20,3 +19,4 @@
     border-color: #000000 #000000 #000000 #000000;
   }
 </style>
+
