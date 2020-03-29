@@ -10,6 +10,7 @@
       sm8
       md6
     >
+
       <div class="text-center">
         <logo />
         <vuetify-logo />
