@@ -1,4 +1,5 @@
 <template>
+
   <v-layout
     column
     justify-center
@@ -87,6 +88,11 @@ export default {
   components: {
     Logo,
     VuetifyLogo
+  },
+  data () {
+    return {
+      dialog: false,
+    }
   }
 }
 </script>
