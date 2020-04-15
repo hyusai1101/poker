@@ -1,15 +1,15 @@
 <template>
   <div class="example">
-    <PokerTable/>
+    <PokerTable />
   </div>
 </template>
 
 <script>
-  import PokerTable from '../../components/PokerTable'
+import PokerTable from "../../components/PokerTable";
 
-  export default {
-    components: {
-      PokerTable
-    },
-  }
+export default {
+  components: {
+    PokerTable,
+  },
+};
 </script>

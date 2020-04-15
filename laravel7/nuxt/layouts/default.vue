@@ -1,12 +1,11 @@
 <template>
-    <v-content>
-      <v-container>
-        <nuxt />
-      </v-container>
-    </v-content>
+  <v-content>
+    <v-container>
+      <nuxt />
+    </v-container>
+  </v-content>
 </template>
 
 <script>
-export default {
-}
+export default {};
 </script>
