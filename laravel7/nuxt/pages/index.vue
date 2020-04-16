@@ -1,10 +1,9 @@
 <template>
-  <v-layout
-column justify-center
-align-center
+  <v-layout column justify-center align-center>
+    <v-flex
+xs12 sm8
+md6
 >
-    <v-flex xs12
-sm8 md6>
       <div class="text-center">
         <logo />
         <vuetify-logo />
@@ -21,13 +20,16 @@ sm8 md6>
           </p>
           <p>
             For more information on Vuetify, check out the
-            <a href="https://vuetifyjs.com"
-target="_blank"> documentation </a>.
+            <a
+href="https://vuetifyjs.com" target="_blank"
+> documentation </a>.
           </p>
           <p>
             If you have questions, please join the official
-            <a href="https://chat.vuetifyjs.com/"
-target="_blank" title="chat">
+            <a
+href="https://chat.vuetifyjs.com/" target="_blank"
+title="chat"
+>
               discord </a>.
           </p>
           <p>
@@ -46,21 +48,25 @@ target="_blank" title="chat">
           <div class="text-xs-right">
             <em><small>&mdash; John Leider</small></em>
           </div>
-          <hr class="my-3" >
-          <a href="https://nuxtjs.org/"
-target="_blank">
+          <hr class="my-3">
+          <a
+href="https://nuxtjs.org/" target="_blank"
+>
             Nuxt Documentation
           </a>
-          <br >
-          <a href="https://github.com/nuxt/nuxt.js"
-target="_blank">
+          <br>
+          <a
+href="https://github.com/nuxt/nuxt.js" target="_blank"
+>
             Nuxt GitHub
           </a>
         </v-card-text>
         <v-card-actions>
           <v-spacer />
-          <v-btn color="primary"
-nuxt to="/inspire">
+          <v-btn
+color="primary" nuxt
+to="/inspire"
+>
             Continue
           </v-btn>
         </v-card-actions>
