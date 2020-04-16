@@ -8,46 +8,45 @@ class="human"
 
     <v-app id="inspire">
       <v-row justify="center">
-        <v-btn color="primary" dark @click.stop="dialog = true">
+        <v-btn color="primary" dark
+@click.stop="dialog = true"
+>
           Open Dialog
         </v-btn>
 
-        <v-dialog v-model="dialog" max-width="290">
+        <v-dialog
+v-model="dialog" max-width="1000"
+>
           <v-card>
-            <v-card-title
-class="headline">
-              Use Google's location service?
+            <v-card-title class="headline">
+              ハンドレンジ表
             </v-card-title>
 
             <table class="table table-bordered">
-              <thead class="thead-dark">
-                <tr>
-                  <th>A</th>
-                  <th>K</th>
-                  <th>Q</th>
-                  <th>J</th>
-                </tr>
-              </thead>
               <tbody>
-                <td>A</td>
-                <td>K</td>
-                <td>Q</td>
-                <td>J</td>
+              <tr v-for="handrange in handranges">
+                 <td>{{ handrange.firstHand }}{{ handrange.secondHand }}{{ handrange.suited }}</td>
+              </tr>
               </tbody>
             </table>
             <v-card-text>
-              Let Google help apps determine location. This means sending
-              anonymous location data to Google, even when no apps are running.
+              ポジションでも書くかな
             </v-card-text>
 
             <v-card-actions>
               <v-spacer />
 
-              <v-btn color="green darken-1" text @click="dialog = false">
+              <v-btn
+color="green darken-1" text
+@click="dialog = false"
+>
                 Disagree
               </v-btn>
 
-              <v-btn color="green darken-1" text @click="dialog = false">
+              <v-btn
+color="green darken-1" text
+@click="dialog = false"
+>
                 Agree
               </v-btn>
             </v-card-actions>
@@ -63,7 +62,29 @@ export default {
   data() {
     return {
       dialog: false,
-      handranges: [{ name: "田中", name: "田中" }],
+      handranges: [
+        {
+          id: "1",
+          firstHand: "A",
+          secondHand: "A",
+          action: "reRaise",
+          suited: true,
+        },
+        {
+          id: "2",
+          firstHand: "A",
+          secondHand: "K",
+          action: "reRaise",
+          suited: true,
+        },
+        {
+          id: "3",
+          firstHand: "A",
+          secondHand: "Q",
+          action: "call",
+          suited: true,
+        },
+      ],
     };
   },
   methods: {
