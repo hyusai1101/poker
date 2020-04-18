@@ -6,6 +6,9 @@ class="human"
 /></a>
     </div>
 
+    <pre>
+      {{ this.handrange }}
+    </pre>
     <button @click="testApi">Greet</button>
     <v-app id="inspire">
       <v-row justify="center">
@@ -60,7 +63,7 @@ export default {
   name: "PokerTable",
   data() {
     return {
-      test: null,
+      handrange: [],
       dialog: false,
       handranges: [
         {
@@ -87,16 +90,14 @@ export default {
       ],
     };
   },
-  methods: {
-    testApi: function () {
-      const baseUrl = 'http://poker.com/api/handRanges';
-      const response = axios.get(baseUrl).then(res =>(
-        console.log(res)
-      ))
-    }
-  },
   computed: {
     ...mapGetters(['items'])
+  },
+  mounted () {
+    const baseUrl = 'http://poker.com/api/handRanges';
+    axios.get(baseUrl).then(res =>(
+      this.handrange = res.data.data
+    ))
   }
 };
 </script>
