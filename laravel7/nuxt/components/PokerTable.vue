@@ -6,17 +6,14 @@ class="human"
 /></a>
     </div>
 
+    <button @click="testApi">Greet</button>
     <v-app id="inspire">
       <v-row justify="center">
-        <v-btn color="primary" dark
-@click.stop="dialog = true"
->
+        <v-btn color="primary" dark @click.stop="dialog = true">
           Open Dialog
         </v-btn>
 
-        <v-dialog
-v-model="dialog" max-width="1000"
->
+        <v-dialog v-model="dialog" max-width="1000">
           <v-card>
             <v-card-title class="headline">
               ハンドレンジ表
@@ -57,10 +54,13 @@ color="green darken-1" text
   </div>
 </template>
 <script>
+import axios from 'axios';
+import { mapGetters } from 'vuex'
 export default {
   name: "PokerTable",
   data() {
     return {
+      test: null,
       dialog: false,
       handranges: [
         {
@@ -88,11 +88,16 @@ export default {
     };
   },
   methods: {
-    clickDialog() {
-      console.log("sss");
-      alert("aaa");
-    },
+    testApi: function () {
+      const baseUrl = 'http://poker.com/api/handRanges';
+      const response = axios.get(baseUrl).then(res =>(
+        console.log(res)
+      ))
+    }
   },
+  computed: {
+    ...mapGetters(['items'])
+  }
 };
 </script>
 

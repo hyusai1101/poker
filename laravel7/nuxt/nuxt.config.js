@@ -40,8 +40,14 @@ export default {
    ** Nuxt.js modules
    */
   modules: [
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    ['@nuxtjs/axios', {
+      credentials: true
+    }],
   ],
+  axios: {
+
+  },
   /*
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module
