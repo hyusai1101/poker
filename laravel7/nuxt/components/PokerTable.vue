@@ -9,7 +9,6 @@ class="human"
     <pre>
       {{ this.handrange }}
     </pre>
-    <button @click="testApi">Greet</button>
     <v-app id="inspire">
       <v-row justify="center">
         <v-btn color="primary" dark @click.stop="dialog = true">
@@ -96,7 +95,8 @@ export default {
   mounted () {
     const baseUrl = 'http://poker.com/api/handRanges';
     axios.get(baseUrl).then(res =>(
-      this.handrange = res.data.data
+      // this.handrange = res.data.data
+      console.log(res.data.data)
     ))
   }
 };
