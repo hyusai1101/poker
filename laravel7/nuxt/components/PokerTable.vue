@@ -1,9 +1,8 @@
 <template>
   <div>
-    <div class="ellipse">
-      <a @click="dialog = true"> <img src="/human.png" class="human"/></a>
+    <div class="poker-table">
     </div>
-
+    <span @click="openModal"><img src="/human.png" class="human"/></span>
     <v-app id="inspire">
       <v-row justify="center">
         <v-btn color="primary" dark @click.stop="dialog = true">
@@ -29,23 +28,6 @@
               ポジションとアクション毎のカラー一覧でも書くかな
             </v-card-text>
 
-            <v-card-actions>
-              <v-spacer/>
-
-              <v-btn
-                color="green darken-1" text
-                @click="dialog = false"
-              >
-                Disagree
-              </v-btn>
-
-              <v-btn
-                color="green darken-1" text
-                @click="dialog = false"
-              >
-                Agree
-              </v-btn>
-            </v-card-actions>
           </v-card>
         </v-dialog>
       </v-row>
@@ -87,18 +69,28 @@
         axios.put(baseUrl, {
           'id': handRangeId,
           'action': requestAction
-        }).then(function (response) {
-        })
-          .catch(error => {
-            console.log(error)
-          });
+        }).catch(error => {
+          console.log(error);
+          alert('ハンドレンジの変更に失敗しました。リロードして再度お試しください')
+        });
+      },
+      /**
+       * fixme モーダルの切替/多分ポジションごとにレンダリングするデータを切り替えないといけない
+       * まだAPI側もポジションに対応してないけど
+       */
+      openModal(){
+        if (this.dialog){
+          this.dialog = false
+        }else{
+          this.dialog = true
+        }
       }
     },
   };
 </script>
 
 <style scoped>
-  .ellipse {
+  .poker-table {
     margin: 0 auto;
     width: 700px;
     height: 400px;
