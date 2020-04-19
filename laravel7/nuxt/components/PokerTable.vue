@@ -53,7 +53,6 @@
 </template>
 <script>
   import axios from 'axios';
-  import {mapGetters} from 'vuex'
 
   export default {
     name: "PokerTable",
@@ -62,9 +61,6 @@
         handRanges: [],
         dialog: false,
       };
-    },
-    computed: {
-      ...mapGetters(['items'])
     },
     mounted() {
       const baseUrl = 'http://poker.com/api/handRanges';
@@ -94,6 +90,13 @@
           .catch(error => {
             console.log(error)
           })
+      }
+    },
+    computed: {
+      // 算出 getter 関数
+      reversedMessage: function () {
+        // `this` は vm インスタンスを指します
+        return this.message.split('').reverse().join('')
       }
     }
   };
