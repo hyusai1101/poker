@@ -19,13 +19,14 @@
             <table class="table table-bordered">
               <tbody>
               <tr v-for="handRange in handRanges">
-                <td v-for="hand in handRange" v-bind:class="hand.action" @click="update(hand.id,hand.action)">{{ hand.firstHand }}{{ hand.secondHand }}<span
+                <td v-for="hand in handRange" v-bind:class="hand.action" @click="update(hand.id,hand.action, hand)">
+                  {{hand.firstHand }}{{ hand.secondHand }}<span
                   v-if="hand.suited">s</span><span v-else="hand.suited">o</span></td>
               </tr>
               </tbody>
             </table>
             <v-card-text>
-              ポジションでも書くかな
+              ポジションとアクション毎のカラー一覧でも書くかな
             </v-card-text>
 
             <v-card-actions>
@@ -69,27 +70,28 @@
       ))
     },
     methods: {
-      update(handRangeId,action) {
+      update(handRangeId, action, hand) {
         // fixme リクエストアクションはどっちで担保するか決めないといけない。
         let requestAction = '';
-        if(action === 'fold'){
+        if (action === 'fold') {
           requestAction = 'call'
-        } else if(action === 'call'){
+        } else if (action === 'call') {
           requestAction = 'raise'
-        } else if(action === 'raise'){
+        } else if (action === 'raise') {
           requestAction = 're_raise'
         } else {
-          requestAction = ' fold'
+          requestAction = 'fold'
         }
+        hand.action = requestAction
         const baseUrl = 'http://poker.com/api/handRanges';
         axios.put(baseUrl, {
           'id': handRangeId,
           'action': requestAction
-        }).then(response =>
-            console.log(response))
+        }).then(function (response) {
+        })
           .catch(error => {
             console.log(error)
-          })
+          });
       }
     },
   };
@@ -119,18 +121,22 @@
     text-align: center;
     color: black;
   }
-  .fold{
+
+  .fold {
     background-color: #555E7B;
   }
-  .call{
+
+  .call {
     color: red;
     background-color: #B7D968;
   }
-  .raise{
+
+  .raise {
     color: blue;
     background-color: #B576AD;
   }
-  .re_raise{
+
+  .re_raise {
     color: blue;
     background-color: #FDE47F;
   }
