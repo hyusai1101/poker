@@ -26,7 +26,7 @@ class HandRangeController extends Controller
             $data[$handRange['firstHand']][] = $handRange;
         }
         return ((new ApiResponse())
-            ->addData($data)->format());
+            ->setData($data)->format());
     }
 
     /**
