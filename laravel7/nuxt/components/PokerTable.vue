@@ -11,11 +11,10 @@
 
         <v-dialog v-model="dialog" max-width="1000">
           <v-card>
-            <v-card-title class="headline">
+            <v-card-text justify="center" class="headline">
               ハンドレンジ表
-            </v-card-title>
-
-            <table class="table table-bordered">
+            </v-card-text>
+            <table>
               <tbody>
               <tr v-for="handRange in handRanges">
                 <td v-for="hand in handRange" v-bind:class="hand.action" @click="update(hand.id,hand.action, hand)">
@@ -27,7 +26,6 @@
             <v-card-text>
               ポジションとアクション毎のカラー一覧でも書くかな
             </v-card-text>
-
           </v-card>
         </v-dialog>
       </v-row>
