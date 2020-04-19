@@ -1,14 +1,9 @@
 <template>
   <div>
     <div class="ellipse">
-      <a @click="dialog = true"> <img src="/human.png"
-class="human"
-/></a>
+      <a @click="dialog = true"> <img src="/human.png" class="human"/></a>
     </div>
 
-    <pre>
-      {{ this.handrange }}
-    </pre>
     <v-app id="inspire">
       <v-row justify="center">
         <v-btn color="primary" dark @click.stop="dialog = true">
@@ -23,8 +18,8 @@ class="human"
 
             <table class="table table-bordered">
               <tbody>
-              <tr v-for="handrange in handranges">
-                 <td>{{ handrange.firstHand }}{{ handrange.secondHand }}{{ handrange.suited }}</td>
+              <tr v-for="handRange in handRanges">
+                <td v-for="hand in handRange">{{ hand.firstHand }}{{ hand.secondHand }}<span v-if="hand.suited">S</span><span v-else="hand.suited">O</span></td>
               </tr>
               </tbody>
             </table>
@@ -62,31 +57,8 @@ export default {
   name: "PokerTable",
   data() {
     return {
-      handrange: [],
+      handRanges: [],
       dialog: false,
-      handranges: [
-        {
-          id: "1",
-          firstHand: "A",
-          secondHand: "A",
-          action: "reRaise",
-          suited: true,
-        },
-        {
-          id: "2",
-          firstHand: "A",
-          secondHand: "K",
-          action: "reRaise",
-          suited: true,
-        },
-        {
-          id: "3",
-          firstHand: "A",
-          secondHand: "Q",
-          action: "call",
-          suited: true,
-        },
-      ],
     };
   },
   computed: {
@@ -95,8 +67,7 @@ export default {
   mounted () {
     const baseUrl = 'http://poker.com/api/handRanges';
     axios.get(baseUrl).then(res =>(
-      // this.handrange = res.data.data
-      console.log(res.data.data)
+      this.handRanges = res.data.data
     ))
   }
 };
@@ -119,5 +90,12 @@ export default {
   width: 200px;
   height: 200px;
   position: relative;
+}
+
+table th,table td{
+  color:blue;
+  border:solid 1px black;
+  background-color:yellowgreen;
+  text-align: center;
 }
 </style>
