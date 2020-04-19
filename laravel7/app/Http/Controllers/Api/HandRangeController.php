@@ -23,7 +23,7 @@ class HandRangeController extends Controller
         $handRanges = $handRange->where([['user_id', 1], ['table_type_id', 1]])->get()->toArray();
         $data = [];
         foreach ($handRanges as $handRange) {
-            $data[$handRange['firstHand']][] = $handRange;
+            $data['"'."{$handRange['firstHand']}".'"'][] = $handRange;
         }
         return ((new ApiResponse())
             ->setData($data)->format());
