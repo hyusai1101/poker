@@ -19,7 +19,7 @@
             <table class="table table-bordered">
               <tbody>
               <tr v-for="handRange in handRanges">
-                <td v-for="hand in handRange" @click="update(hand.id,hand.action)">{{ hand.firstHand }}{{ hand.secondHand }}<span
+                <td v-for="hand in handRange" v-bind:class="hand.action" @click="update(hand.id,hand.action)">{{ hand.firstHand }}{{ hand.secondHand }}<span
                   v-if="hand.suited">s</span><span v-else="hand.suited">o</span></td>
               </tr>
               </tbody>
@@ -114,10 +114,24 @@
     position: relative;
   }
 
-  table th, table td {
-    color: blue;
-    border: solid 1px black;
-    background-color: yellowgreen;
+  table td {
+    border: solid 1px white;
     text-align: center;
+    color: black;
+  }
+  .fold{
+    background-color: #555E7B;
+  }
+  .call{
+    color: red;
+    background-color: #B7D968;
+  }
+  .raise{
+    color: blue;
+    background-color: #B576AD;
+  }
+  .re_raise{
+    color: blue;
+    background-color: #FDE47F;
   }
 </style>
