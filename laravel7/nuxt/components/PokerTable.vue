@@ -1,7 +1,6 @@
 <template>
   <div>
-    <div class="poker-table">
-    </div>
+    <span class="poker-table"></span>
     <span @click="openModal"><img src="/human.png" class="human"/></span>
     <v-app id="inspire">
       <v-row justify="center">
@@ -20,7 +19,7 @@
               <tbody>
               <tr v-for="handRange in handRanges">
                 <td v-for="hand in handRange" v-bind:class="hand.action" @click="update(hand.id,hand.action, hand)">
-                  {{hand.firstHand }}{{ hand.secondHand }}<span
+                  {{ hand.firstHand }}{{ hand.secondHand }}<span
                   v-if="hand.suited">s</span><span v-else="hand.suited">o</span></td>
               </tr>
               </tbody>
@@ -33,7 +32,6 @@
 </template>
 <script>
   import axios from 'axios';
-
   export default {
     name: "PokerTable",
     data() {

@@ -1,11 +1,36 @@
 // 一番大元のscss。ここにcss書きたくないけど一旦ここに記載。cssの記述量が増えてきたらファイル分割をしていきたい。
 //@import "consts";
 
+.Wrapper {
+  width: 100%;
+  padding-bottom: 50px;
+}
+
 .l-Header {
   width: 100%;
   padding: 15px 0;
 }
-.l-Header_Container{
+
+.l-Header_Container {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.l-Main {
+  width: 100%;
+}
+
+.l-Header_Container {
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.l-Footer{
+  width: 100%;
+}
+
+.l-Header_Container {
   width: 1200px;
   margin: 0 auto;
 }
