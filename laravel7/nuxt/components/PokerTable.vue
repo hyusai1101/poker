@@ -5,16 +5,12 @@
     <span @click="openModal"><img src="/human.png" class="human"/></span>
     <v-app id="inspire">
       <v-row justify="center">
-        <v-btn color="primary" dark @click.stop="dialog = true">
-          Open Dialog
-        </v-btn>
-
-        <v-dialog v-model="dialog" max-width="1000">
-          <v-card>
+        <v-dialog v-model="dialog" max-width="1000" style="background-color: #808080">
+          <v-card style="background-color: #808080">
             <v-card-text justify="center" class="headline">
               ハンドレンジ表
             </v-card-text>
-            <table>
+            <v-simple-table>
               <tbody>
               <tr v-for="handRange in handRanges">
                 <td v-for="hand in handRange" v-bind:class="hand.action" @click="update(hand.id,hand.action, hand)">
@@ -22,7 +18,7 @@
                   v-if="hand.suited">s</span><span v-else="hand.suited">o</span></td>
               </tr>
               </tbody>
-            </table>
+            </v-simple-table>
             <v-card-text>
               ポジションとアクション毎のカラー一覧でも書くかな
             </v-card-text>
@@ -129,5 +125,15 @@
   .re_raise {
     color: blue;
     background-color: #FDE47F;
+  }
+
+  .hand-display li{
+    display: inline;
+  }
+
+  .square {
+    width: 100px;
+    height: 100px;
+    background: black;
   }
 </style>
