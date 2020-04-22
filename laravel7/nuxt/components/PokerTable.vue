@@ -11,6 +11,15 @@
             </v-list-item-content>
           </v-list-item>
         </v-card>
+
+        <v-card class="mx-auto" max-width="200" height="100" @click="openModal">
+          <v-list-item>
+            <v-list-item-content>
+              <v-list-item-title class="headline mb-1">BB</v-list-item-title>
+              <v-list-item-subtitle>ビックブラインド</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+        </v-card>
         <v-dialog v-model="dialog" max-width="1000" style="background-color: #808080">
           <v-card style="background-color: #808080">
             <v-card-text justify="center" class="headline">
