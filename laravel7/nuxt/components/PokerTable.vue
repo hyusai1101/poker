@@ -1,9 +1,16 @@
 <template>
   <div>
-    <span class="poker-table"></span>
-    <span @click="openModal"><img src="/human.png" class="human"/></span>
     <v-app id="inspire">
       <v-row justify="center">
+        <span class="poker-table"></span>
+        <v-card class="mx-auto" max-width="200" height="100" @click="openModal">
+          <v-list-item>
+            <v-list-item-content>
+              <v-list-item-title class="headline mb-1">BB</v-list-item-title>
+              <v-list-item-subtitle>ビックブラインド</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+        </v-card>
         <v-dialog v-model="dialog" max-width="1000" style="background-color: #808080">
           <v-card style="background-color: #808080">
             <v-card-text justify="center" class="headline">
@@ -86,6 +93,8 @@
 
 <style scoped>
   .poker-table {
+    display: inline-block;
+    text-align: center;
     margin: 0 auto;
     width: 700px;
     height: 400px;
