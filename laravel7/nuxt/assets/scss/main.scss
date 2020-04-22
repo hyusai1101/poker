@@ -1,0 +1,11 @@
+// 一番大元のscss。ここにcss書きたくないけど一旦ここに記載。cssの記述量が増えてきたらファイル分割をしていきたい。
+//@import "consts";
+
+.l-Header {
+  width: 100%;
+  padding: 15px 0;
+}
+.l-Header_Container{
+  width: 1200px;
+  margin: 0 auto;
+}
