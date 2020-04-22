@@ -10,6 +10,12 @@
             <v-card-text justify="center" class="headline">
               ハンドレンジ表
             </v-card-text>
+            <div class="text-center">
+              <v-chip class="ma-2" color="#FDE47F" text-color="blue">re_raise</v-chip>
+              <v-chip class="ma-2" color="#B576AD" text-color="blue">raise</v-chip>
+              <v-chip class="ma-2" color="#B7D968" text-color="blue">call</v-chip>
+              <v-chip class="ma-2" color="#555E7B" text-color="blue">fold</v-chip>
+            </div>
             <v-simple-table>
               <tbody>
               <tr v-for="handRange in handRanges">
@@ -19,9 +25,6 @@
               </tr>
               </tbody>
             </v-simple-table>
-            <v-card-text>
-              ポジションとアクション毎のカラー一覧でも書くかな
-            </v-card-text>
           </v-card>
         </v-dialog>
       </v-row>
