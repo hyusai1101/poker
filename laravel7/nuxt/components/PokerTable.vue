@@ -2,48 +2,17 @@
   <div>
     <v-app id="inspire">
       <v-row justify="center">
-        <span class="poker-table"></span>
-
-
-        <!-- fixme この辺のカードコンポーネントは整備しないと事になる-->
-        <v-card class="mx-auto" max-width="200" height="100" @click="openModal(this.$consts.BBID)">
+        <span class="poker-table">
+        <v-card class="mx-auto" max-width="150" height="75" @click="openModal(10)" style="right: 250px; top: 35px">
           <v-list-item>
             <v-list-item-content>
-              <v-list-item-title class="headline mb-1">BB</v-list-item-title>
-              <v-list-item-subtitle>ビックブラインド</v-list-item-subtitle>
+              <v-list-item-title class="headline mb-1">BTN</v-list-item-title>
+              <v-list-item-subtitle>ボタン</v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
         </v-card>
 
-        <v-card class="mx-auto" max-width="200" height="100" @click="openModal(this.$consts.SBID)">
-          <v-list-item>
-            <v-list-item-content>
-              <v-list-item-title class="headline mb-1">SB</v-list-item-title>
-              <v-list-item-subtitle>スモールブラインド</v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-        </v-card>
-
-        <v-card class="mx-auto" max-width="200" height="100" @click="openModal(this.$consts.UTGID)">
-          <v-list-item>
-            <v-list-item-content>
-              <v-list-item-title class="headline mb-1">UTG</v-list-item-title>
-              <v-list-item-subtitle>アンダーザガン</v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-        </v-card>
-
-        <v-card class="mx-auto" max-width="200" height="100" @click="openModal(this.$consts.MP1)">
-          <v-list-item>
-            <v-list-item-content>
-              <v-list-item-title class="headline mb-1">MP</v-list-item-title>
-              <v-list-item-subtitle>ミドルポジション</v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-        </v-card>
-
-
-        <v-card class="mx-auto" max-width="200" height="100" @click="openModal(this.$consts.CO)">
+        <v-card class="mx-auto" max-width="150" height="75" @click="openModal(9)"style="left: 250px; bottom: 40px;">
           <v-list-item>
             <v-list-item-content>
               <v-list-item-title class="headline mb-1">CO</v-list-item-title>
@@ -52,15 +21,42 @@
           </v-list-item>
         </v-card>
 
-        <v-card class="mx-auto" max-width="200" height="100" @click="openModal(this.$consts.CO)">
+        <v-card class="mx-auto" max-width="150" height="75" @click="openModal(6)" style="bottom: 200px;">
           <v-list-item>
             <v-list-item-content>
-              <v-list-item-title class="headline mb-1">BTN</v-list-item-title>
-              <v-list-item-subtitle>BTNカットオフ</v-list-item-subtitle>
+              <v-list-item-title class="headline mb-1">MP</v-list-item-title>
+              <v-list-item-subtitle>ミドルポジション</v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
         </v-card>
 
+        <v-card class="mx-auto" max-width="150" height="75" @click="openModal(3)" style="left: 250px;">
+          <v-list-item>
+            <v-list-item-content>
+              <v-list-item-title class="headline mb-1">UTG</v-list-item-title>
+              <v-list-item-subtitle>アンダーザガン</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+        </v-card>
+
+        <v-card class="mx-auto" max-width="150" height="75" @click="openModal(2)" style="right: 250px; bottom:70px;">
+          <v-list-item>
+            <v-list-item-content>
+              <v-list-item-title class="headline mb-1">SB</v-list-item-title>
+              <v-list-item-subtitle>スモールブラインド</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+        </v-card>
+
+        <v-card class="mx-auto" max-width="150" height="75" @click="openModal(1)"style="bottom: 20px">
+          <v-list-item>
+            <v-list-item-content>
+              <v-list-item-title class="headline mb-1">BB</v-list-item-title>
+              <v-list-item-subtitle>ビックブラインド</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+        </v-card>
+        </span>
         <v-dialog v-model="dialog" max-width="1000" style="background-color: #808080">
           <v-card style="background-color: #808080">
             <v-card-text justify="center" class="headline">
