@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -14,6 +13,7 @@ use Illuminate\Database\Eloquent\Collection;
  * @mixin Collection
  * @property integer $id
  * @property string $name
+ * @property TableTypePosition $tableTypePositions
  */
 class TableType extends CommonModel
 {
@@ -30,5 +30,10 @@ class TableType extends CommonModel
             'id' => $this->id,
             'name' => $this->name
         ];
+    }
+
+    public function tableTypePositions()
+    {
+        return $this->belongsTo(TableTypePosition::class, 'table_type_id', 'id');
     }
 }

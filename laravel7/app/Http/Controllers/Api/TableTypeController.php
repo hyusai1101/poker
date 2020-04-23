@@ -26,6 +26,7 @@ class TableTypeController extends CommonController
      */
     public function show($tableTypeId, TableType $tableType)
     {
+        /** @var TableType $tableTypeModel */
         $tableTypeModel = $this->_findTableTypeByTableId($tableTypeId, $tableType);
         return ((new ApiResponse())
             ->addData($tableTypeModel->toArray())->format());
