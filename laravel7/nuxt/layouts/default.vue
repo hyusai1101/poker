@@ -14,8 +14,8 @@
         </v-content>
       </div>
     </div>
-    <div class="l-Header">
-      <div class="l-Header_Container">
+    <div class="l-Footer">
+      <div class="l-Footer_Container">
         <TheFooter/>
       </div>
     </div>
