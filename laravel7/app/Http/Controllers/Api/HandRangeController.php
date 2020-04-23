@@ -12,18 +12,19 @@ use RuntimeException;
 class HandRangeController extends Controller
 {
     /**
+     * @param $positionId
      * @param HandRange $handRange
      * @return array
      */
-    public function index(HandRange $handRange)
+    public function index($positionId, HandRange $handRange)
     {
         /**
          * fixme テーブルタイプとログインユーザーの処理が必要
          */
-        $handRanges = $handRange->where([['user_id', 1], ['table_type_id', 1]])->get()->toArray();
+        $handRanges = $handRange->where([['user_id', 1], ['table_type_id', 1], ['position_id', $positionId]])->get()->toArray();
         $data = [];
         foreach ($handRanges as $handRange) {
-            $data['"'."{$handRange['firstHand']}".'"'][] = $handRange;
+            $data['"' . "{$handRange['firstHand']}" . '"'][] = $handRange;
         }
         return ((new ApiResponse())
             ->setData($data)->format());
