@@ -1,7 +1,7 @@
 <template>
     <v-card height="65">
       <v-footer
-        absolute
+        fixed
         class="font-weight-medium"
       >
         <v-col
