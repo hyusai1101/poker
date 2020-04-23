@@ -3,7 +3,10 @@
     <v-app id="inspire">
       <v-row justify="center">
         <span class="poker-table"></span>
-        <v-card class="mx-auto" max-width="200" height="100" @click="openModal">
+
+
+        <!-- fixme この辺のカードコンポーネントは整備しないと事になる-->
+        <v-card class="mx-auto" max-width="200" height="100" @click="openModal(this.$consts.BBID)">
           <v-list-item>
             <v-list-item-content>
               <v-list-item-title class="headline mb-1">BB</v-list-item-title>
@@ -12,14 +15,52 @@
           </v-list-item>
         </v-card>
 
-        <v-card class="mx-auto" max-width="200" height="100" @click="openModal">
+        <v-card class="mx-auto" max-width="200" height="100" @click="openModal(this.$consts.SBID)">
           <v-list-item>
             <v-list-item-content>
-              <v-list-item-title class="headline mb-1">BB</v-list-item-title>
-              <v-list-item-subtitle>ビックブラインド</v-list-item-subtitle>
+              <v-list-item-title class="headline mb-1">SB</v-list-item-title>
+              <v-list-item-subtitle>スモールブラインド</v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
         </v-card>
+
+        <v-card class="mx-auto" max-width="200" height="100" @click="openModal(this.$consts.UTGID)">
+          <v-list-item>
+            <v-list-item-content>
+              <v-list-item-title class="headline mb-1">UTG</v-list-item-title>
+              <v-list-item-subtitle>アンダーザガン</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+        </v-card>
+
+        <v-card class="mx-auto" max-width="200" height="100" @click="openModal(this.$consts.MP1)">
+          <v-list-item>
+            <v-list-item-content>
+              <v-list-item-title class="headline mb-1">MP</v-list-item-title>
+              <v-list-item-subtitle>ミドルポジション</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+        </v-card>
+
+
+        <v-card class="mx-auto" max-width="200" height="100" @click="openModal(this.$consts.CO)">
+          <v-list-item>
+            <v-list-item-content>
+              <v-list-item-title class="headline mb-1">CO</v-list-item-title>
+              <v-list-item-subtitle>カットオフ</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+        </v-card>
+
+        <v-card class="mx-auto" max-width="200" height="100" @click="openModal(this.$consts.CO)">
+          <v-list-item>
+            <v-list-item-content>
+              <v-list-item-title class="headline mb-1">BTN</v-list-item-title>
+              <v-list-item-subtitle>BTNカットオフ</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+        </v-card>
+
         <v-dialog v-model="dialog" max-width="1000" style="background-color: #808080">
           <v-card style="background-color: #808080">
             <v-card-text justify="center" class="headline">
@@ -56,12 +97,6 @@
         dialog: false,
       };
     },
-    mounted() {
-      const baseUrl = 'http://poker.com/api/handRanges';
-      axios.get(baseUrl).then(res => (
-        this.handRanges = res.data.data
-      ))
-    },
     methods: {
       update(handRangeId, action, hand) {
         // fixme リクエストアクションはどっちで担保するか決めないといけない。
@@ -87,12 +122,17 @@
       },
       /**
        * fixme モーダルの切替/多分ポジションごとにレンダリングするデータを切り替えないといけない
-       * まだAPI側もポジションに対応してないけど
+       * モーダルの外側をクリックされた時にhandrangeの中をクリアにする処理をいれる
        */
-      openModal(){
+      openModal(positionId){
+        console.log(this.$consts.BBID)
         if (this.dialog){
           this.dialog = false
         }else{
+          const baseUrl = 'http://poker.com/api/handRanges/' + positionId;
+          axios.get(baseUrl).then(res => (
+            this.handRanges = res.data.data
+          ))
           this.dialog = true
         }
       }
