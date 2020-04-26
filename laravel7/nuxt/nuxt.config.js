@@ -48,9 +48,11 @@ export default {
     ['@nuxtjs/axios', {
       credentials: true
     }],
+    '@nuxtjs/auth'
   ],
   axios: {
-
+    // fixme laravelの.envかたbaseURLを取得したい
+    baseURL: 'http://poker.com/api'
   },
   /*
    ** vuetify module configuration
@@ -89,6 +91,27 @@ export default {
   watchers: {
     webpack: {
       poll: 1000,
+    },
+  },
+  auth:{
+    strategies: {
+      local: { //自前の認証処理を実行する
+        endpoints: {
+          login: { //ログインを実行する際のリクエスト設定
+            url: 'login', method: 'post', propertyName: 'token'
+          },
+          user:{ //ログイン済みのユーザ情報取得を実行する際のリクエスト設定
+            url: 'me', method: 'get', propertyName: 'data'
+          },
+          logout: {　//ログアウトを実行する際のリクエスト設定
+            url: 'logout', method: 'get'
+          },
+        },
+      },
+    },
+    redirect: {
+      login: '/auth/login', //未ログインユーザが認証が必要な画面にアクセスした際のリダイレクト先
+      home: '/' //ログイン後のリダイレクト先
     },
   },
   generate: {
