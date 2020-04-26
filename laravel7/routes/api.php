@@ -24,4 +24,6 @@ Route::group(['namespace' => 'api'],function (){
     Route::put('/handRanges','HandRangeController@update');
 
     Route::post('/register','RegisterController@register');
+
+    Route::get('/me','MeController@index');
 });
