@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +20,8 @@ Route::group(['namespace' => 'api'],function (){
     Route::get('/positions','PositionController@index');
     Route::get('/positions/{positionId}','PositionController@show');
 
-    Route::get('/handRanges/{positionId}','handRangeController@index');
-    Route::put('/handRanges','handRangeController@update');
+    Route::get('/handRanges/{positionId}','HandRangeController@index');
+    Route::put('/handRanges','HandRangeController@update');
+
+    Route::post('/register','RegisterController@register');
 });
