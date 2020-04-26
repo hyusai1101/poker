@@ -121,7 +121,6 @@
        * モーダルの外側をクリックされた時にhandrangeの中をクリアにする処理をいれる
        */
       openModal(positionId){
-        console.log(this.$consts.BBID)
         if (this.dialog){
           this.dialog = false
         }else{
