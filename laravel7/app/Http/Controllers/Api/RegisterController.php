@@ -2,17 +2,13 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Libraries\ApiResponse;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
+use Tymon\JWTAuth\JWTAuth;
 
 class RegisterController extends CommonController
 {
@@ -36,14 +32,16 @@ class RegisterController extends CommonController
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
+    protected $auth;
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(JWTAuth $auth)
     {
-//        $this->middleware('guest');
+        $this->auth = $auth;
     }
 
     /**
@@ -52,21 +50,23 @@ class RegisterController extends CommonController
      */
     public function register(Request $request)
     {
-        $this->validator($request->all())->validate();
+        $validator = $this->validator($request->all());
+        if(!$validator->fails()){
+            $user = $this->create($request->all());
 
-        /** User $user  */
-        event(new Registered($user = $this->create($request->all())));
+            $token = $this->auth->attempt($request->only( 'email', 'password'));
 
-        $this->guard()->login($user);
-
-        if ($response = $this->registered($request, $user)) {
-            return $response;
+            return response()->json([
+                'success' => true,
+                'data' => $user,
+                'token' => $token
+            ], 200);
         }
 
-        //todo 多分ここでデフォルトハンドレンジを作成する必要がある。
-
-        return ((new ApiResponse())
-            ->setData([])->format());
+        return response()->json([
+            'success' => false,
+            'errors' => $validator->errors()
+        ], 422);
     }
 
     /**
