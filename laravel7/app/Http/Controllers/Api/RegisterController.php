@@ -63,8 +63,10 @@ class RegisterController extends CommonController
             return $response;
         }
 
+        //todo 多分ここでデフォルトハンドレンジを作成する必要がある。
+
         return ((new ApiResponse())
-            ->addData($user->get()->toArray())->format());
+            ->setData([])->format());
     }
 
     /**
