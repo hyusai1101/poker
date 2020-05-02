@@ -5,17 +5,16 @@
     >
       <v-form
         ref="form"
-        v-model="valid"
         lazy-validation
       >
         <v-text-field
-          v-model="email"
+          v-model="loginInfo.email"
           :rules="emailRules"
           label="メールアドレス"
           required
         ></v-text-field>
         <v-text-field
-          v-model="password"
+          v-model="loginInfo.password"
           :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
           :rules="[rules.required, rules.min]"
           :type="show1 ? 'text' : 'password'"
@@ -35,8 +34,7 @@
 </template>
 
 <script>
-
-import axios from 'axios';
+import {mapActions} from 'vuex'
 export default {
   data() {
     return {
@@ -51,19 +49,21 @@ export default {
         required: value => !!value || 'Required.',
         min: v => v.length >= 5 || 'Min 8 characters',
       },
+      loginInfo: {
+        email: '',
+        password: '',
+      }
     };
   },
   methods: {
     login() {
-      const baseUrl = 'http://poker.com/api/login';
-      axios.post(baseUrl, {
-        'email': this.email,
-        'password': this.password
-      }).then(res => {
+      this.postLogin(this.loginInfo).then(()=>{
         this.$router.push('/')
-      }).catch(error => {
-      });
+      })
     },
+    ...mapActions([
+      'postLogin'
+    ])
   }
 }
 </script>
