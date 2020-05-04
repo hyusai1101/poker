@@ -1,34 +1,26 @@
-/**
- * @nuxt/auth モジュールで認証後に me を fetch
- * そのため、me の state は store では管理しない
- */
-import axios from 'axios'
-
-const baseUrl = `${process.env.API_URL}/api`;
-// 厳格モードの設定は、ルートモジュールでのみ可能
-export const strict = false
-
-export const state = () => ({
-  user: null
-});
-
-export const getters = {
-  user: (state) => state.user
-};
-
-export const mutations = {
-  userState(state, user) {
-    state.user = user
-  },
-};
-
-export const actions = {
-
-  async postLogin({commit}, payload) {
-    await axios.post(baseUrl + '/login', payload, {
-      withCredentials: true
-    }).then((res) => {
-      commit('userState', res)
-    })
-  }
-}
+// const cookieparser = process.server ? require('cookieparser') : undefined
+//
+// export const state = () => {
+//   return {
+//     auth: null
+//   }
+// }
+// export const mutations = {
+//   setAuth (state, auth) {
+//     state.auth = auth
+//   }
+// }
+// export const actions = {
+//   nuxtServerInit ({ commit }, { req }) {
+//     let auth = null
+//     if (req.headers.cookie) {
+//       const parsed = cookieparser.parse(req.headers.cookie)
+//       try {
+//         auth = JSON.parse(parsed.auth)
+//       } catch (err) {
+//         // No valid cookie found
+//       }
+//     }
+//     commit('setAuth', auth)
+//   }
+// }

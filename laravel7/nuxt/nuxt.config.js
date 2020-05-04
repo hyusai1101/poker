@@ -35,7 +35,8 @@ export default {
    */
   plugins: [
     '@/plugins/consts.js',
-    '@/plugins/axios/index.js'
+    '@/plugins/axios/index.js',
+    // { src: 'plugins/axios/index.js', ssr: false }
   ],
   /*
    ** Nuxt.js dev-modules
@@ -66,11 +67,6 @@ export default {
       localStorage: false
     }]
   ],
-  axios: {
-    // fixme laravelの.envかたbaseURLを取得したい
-    baseURL: 'http://poker.com/api',
-    prefix: '/api',
-  },
   proxy: {
     '/api': {
       target: process.env.API_URL,

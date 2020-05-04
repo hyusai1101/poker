@@ -36,6 +36,7 @@
 <script>
 import {mapActions} from 'vuex'
 import axios from 'axios'
+const Cookie = process.client ? require('js-cookie') : undefined
 export default {
   data() {
     return {
@@ -61,14 +62,10 @@ export default {
       axios.post('http://poker.com/api/login/',
         this.loginInfo
       ).then(res =>{
-        console.log(res)
+        Cookie.set('jwt', res.data.token)
       }).catch(error => {
-        console.log(error);
         alert('ハンドレンジの変更に失敗しました。リロードして再度お試しください')
       });
-      // this.postLogin(this.loginInfo).then(()=>{
-      //   this.$router.push('/')
-      // })
     },
     ...mapActions([
       'postLogin'
