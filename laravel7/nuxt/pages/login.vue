@@ -35,6 +35,7 @@
 
 <script>
 import {mapActions} from 'vuex'
+import axios from 'axios'
 export default {
   data() {
     return {
@@ -57,9 +58,17 @@ export default {
   },
   methods: {
     login() {
-      this.postLogin(this.loginInfo).then(()=>{
-        this.$router.push('/')
-      })
+      axios.post('http://poker.com/api/login/',
+        this.loginInfo
+      ).then(res =>{
+        console.log(res)
+      }).catch(error => {
+        console.log(error);
+        alert('ハンドレンジの変更に失敗しました。リロードして再度お試しください')
+      });
+      // this.postLogin(this.loginInfo).then(()=>{
+      //   this.$router.push('/')
+      // })
     },
     ...mapActions([
       'postLogin'

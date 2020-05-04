@@ -46,6 +46,7 @@ export default {
    */
   modules: [
     '@nuxtjs/dotenv',
+    '@nuxtjs/proxy',
     ['@nuxtjs/axios', {
       credentials: true
     }],
@@ -67,7 +68,16 @@ export default {
   ],
   axios: {
     // fixme laravelの.envかたbaseURLを取得したい
-    baseURL: 'http://poker.com/api'
+    baseURL: 'http://poker.com/api',
+    prefix: '/api',
+  },
+  proxy: {
+    '/api': {
+      target: process.env.API_URL,
+      pathRewrite: {
+        '^/api': '/'
+      }
+    }
   },
   /*
    ** vuetify module configuration

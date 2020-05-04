@@ -7,7 +7,6 @@ export default ({ store, $axios }) => {
   });
 
   $axios.onResponse(config => {
-    console.log('ss')
     $axios.setHeader('Access-Control-Allow-Origin', 'http://poker.com')
   })
 

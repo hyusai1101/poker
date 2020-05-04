@@ -25,11 +25,9 @@ export const mutations = {
 export const actions = {
 
   async postLogin({commit}, payload) {
-    console.log(payload)
     await axios.post(baseUrl + '/login', payload, {
       withCredentials: true
     }).then((res) => {
-      console.log(res)
       commit('userState', res)
     })
   }
