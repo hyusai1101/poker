@@ -66,6 +66,7 @@
 <script>
 
 import axios from 'axios';
+const Cookie = process.client ? require('js-cookie') : undefined
 export default {
   data() {
     return {
@@ -82,6 +83,7 @@ export default {
         'email': this.email,
         'password': this.password
       }).then(res => {
+        Cookie.set('jwt', res.data.token);
         this.$router.push('/')
       }).catch(error => {
       });

@@ -62,7 +62,8 @@ export default {
       axios.post('http://poker.com/api/login/',
         this.loginInfo
       ).then(res =>{
-        Cookie.set('jwt', res.data.token)
+        Cookie.set('jwt', res.data.token);
+        this.$router.push('/')
       }).catch(error => {
         alert('ハンドレンジの変更に失敗しました。リロードして再度お試しください')
       });

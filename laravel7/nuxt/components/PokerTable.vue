@@ -85,6 +85,7 @@
 </template>
 <script>
   import axios from 'axios';
+  const Cookie = process.client ? require('js-cookie') : undefined
   export default {
     name: "PokerTable",
     data() {
@@ -108,13 +109,23 @@
         }
         hand.action = requestAction
         const baseUrl = 'http://poker.com/api/handRanges';
-        axios.put(baseUrl, {
+        const token = 'Bearer ' + Cookie.get('jwt');
+        axios.put(baseUrl,{
+          headers: {
+            'Authorization': token
+          },
           'id': handRangeId,
           'action': requestAction
         }).catch(error => {
           console.log(error);
           alert('ハンドレンジの変更に失敗しました。リロードして再度お試しください')
         });
+
+        // axios.put(baseUrl, {
+        // }).catch(error => {
+        //   console.log(error);
+        //   alert('ハンドレンジの変更に失敗しました。リロードして再度お試しください')
+        // });
       },
       /**
        * fixme モーダルの切替/多分ポジションごとにレンダリングするデータを切り替えないといけない

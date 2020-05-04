@@ -1,17 +1,29 @@
 <template>
   <v-layout>
     <v-flex class="text-center">
-      <img src="/v.png"
-alt="Vuetify.js" class="mb-5"
-/>
-      <blockquote class="blockquote">
-        &#8220;First, solve the problem. Then, write the code.&#8221;
-        <footer>
-          <small>
-            <em>&mdash;John Johsssnson</em>
-          </small>
-        </footer>
-      </blockquote>
+      <button v-on:click="test">aaa</button>
     </v-flex>
   </v-layout>
 </template>
+
+<script>
+  const Cookie = process.client ? require('js-cookie') : undefined;
+  import axios from 'axios'
+  export default {
+    methods: {
+      test() {
+        const header = {"Authorization": "Bearer " + Cookie.get('jwt')};
+        axios.get('http://poker.com/api/me/',{
+          headers: header,
+          data: {}
+        }).then(res =>{
+          console.log(res)
+          // this.$router.push('/')
+        }).catch(error => {
+          console.log(error);
+          alert('ハンドレンジの変更に失敗しました。リロードして再度お試しください')
+        });
+      }
+    }
+  };
+</script>
