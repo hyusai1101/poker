@@ -1,5 +1,5 @@
 <template>
-  <img  class="l-Header-Logo" src="@/assets/twitter_header_photo_2.png">
+  <img class="l-Header-Logo" src="@/assets/logo_transparent.png">
 </template>
 <script>
 export default {
@@ -9,7 +9,8 @@ export default {
 
 <style>
   .l-Header-Logo {
-    width: 50%;
+    width: 100px;
+    height: 100px;
     display: block;
     margin: 0 auto;
   }
