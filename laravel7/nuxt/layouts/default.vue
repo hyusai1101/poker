@@ -1,27 +1,24 @@
-<template>
-  <v-app class="Wrapper">
-    <div class="l-Header">
-      <div class="l-Header_Container">
-        <TheHeader />
-      </div>
+<v-app class="Wrapper">
+  <div class="l-Header">
+    <div class="l-Header_Container">
+      <TheHeader />
     </div>
-    <div class="l-Main">
-      <div class="l-Main_Container">
-        <v-content>
-          <v-container>
-            <nuxt />
-          </v-container>
-        </v-content>
-      </div>
+  </div>
+  <div class="l-Main">
+    <div class="l-Main_Container">
+      <v-content>
+        <v-container>
+          <nuxt />
+        </v-container>
+      </v-content>
     </div>
-    <div class="l-Footer">
-      <div class="l-Footer_Container">
-        <TheFooter/>
-      </div>
+  </div>
+  <div class="l-Footer">
+    <div class="l-Footer_Container">
+      <TheFooter/>
     </div>
-  </v-app>
-</template>
-
+  </div>
+</v-app>
 <script>
 import TheHeader from '@/components/common/TheHeader'
 import TheFooter from '@/components/common/TheFooter'
