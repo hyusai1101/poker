@@ -24,6 +24,7 @@
     "vuex-persistedstate": "^2.7.0"
   },
   "devDependencies": {
+    "@mdi/font": "^5.1.45",
     "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/vuetify": "^1.0.0",
     "babel-eslint": "^10.1.0",
