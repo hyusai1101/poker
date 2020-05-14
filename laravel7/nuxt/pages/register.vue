@@ -1,5 +1,4 @@
 <template>
-  <v-container>
     <v-row
       justify="center"
     >
@@ -60,7 +59,6 @@
 <!--        </v-card-actions>-->
       </v-card>
     </v-row>
-  </v-container>
 </template>
 
 <script>
