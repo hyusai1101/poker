@@ -1,30 +1,42 @@
 <template>
-  <v-form
-    ref="form"
-    v-model="valid"
-    lazy-validation
+  <v-row
+    justify="center"
   >
-    <h2>ログイン</h2>
-    <v-text-field
-      v-model="loginInfo.email"
-      :rules="emailRules"
-      label="メールアドレス"
-      required
-    ></v-text-field>
-    <v-text-field
-      v-model="loginInfo.password"
-      :rules="[rules.required, rules.min]"
-      label="パスワード"
-      required
-    ></v-text-field>
-      <v-btn
-        color="primary"
-        @click="login()"
+    <v-card
+      flat
+      width="90%"
+      max-width="368"
+      color="transparent"
+    >
+      <v-card-title
+        class="justify-center headline"
       >
         ログイン
-      </v-btn>
-  </v-form>
-
+      </v-card-title>
+          <v-text-field
+            v-model="loginInfo.email"
+            :rules="emailRules"
+            label="メールアドレス"
+            required
+          ></v-text-field>
+          <v-text-field
+            v-model="loginInfo.password"
+            :rules="[rules.required, rules.min]"
+            label="パスワード"
+            required
+          ></v-text-field>
+      <v-card-text
+        class="text-center"
+      >
+              <v-btn
+                color="primary"
+                @click="login()"
+              >
+                ログイン
+              </v-btn>
+      </v-card-text>
+    </v-card>
+  </v-row>
 </template>
 
 <script>
