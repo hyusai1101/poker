@@ -13,27 +13,27 @@
       >
         ログイン
       </v-card-title>
-          <v-text-field
-            v-model="loginInfo.email"
-            :rules="emailRules"
-            label="メールアドレス"
-            required
-          ></v-text-field>
-          <v-text-field
-            v-model="loginInfo.password"
-            :rules="[rules.required, rules.min]"
-            label="パスワード"
-            required
-          ></v-text-field>
+      <v-text-field
+        v-model="loginInfo.email"
+        :rules="emailRules"
+        label="メールアドレス"
+        required
+      ></v-text-field>
+      <v-text-field
+        v-model="loginInfo.password"
+        :rules="[rules.required, rules.min]"
+        label="パスワード"
+        required
+      ></v-text-field>
       <v-card-text
         class="text-center"
       >
-              <v-btn
-                color="primary"
-                @click="login()"
-              >
-                ログイン
-              </v-btn>
+        <v-btn
+          color="primary"
+          @click="login()"
+        >
+          ログイン
+        </v-btn>
       </v-card-text>
     </v-card>
   </v-row>
