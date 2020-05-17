@@ -28,7 +28,6 @@ export default {
   components: {
     TheHeader,
     TheFooter
-  },
-  middleware: 'authenticated'
+  }
 };
 </script>
