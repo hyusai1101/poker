@@ -9,6 +9,9 @@
       <v-toolbar-title>try-poker</v-toolbar-title>
       <v-spacer></v-spacer>
 <!--      <img class="l-Header-Logo" src="@/assets/logo_transparent.png">-->
+      <pre>
+        {{user}}
+      </pre>
       <div v-if="user">
         <v-btn
           @click="logout()"
@@ -35,6 +38,7 @@ export default {
   methods: {
     logout() {
       this.$auth.logout();
+      localStorage.removeItem('jwt')
     },
   }
 }

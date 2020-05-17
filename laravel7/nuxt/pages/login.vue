@@ -41,6 +41,7 @@
 
 <script>
   import {mapActions} from 'vuex'
+
   const Cookie = process.client ? require('js-cookie') : undefined;
   export default {
     data() {
@@ -65,9 +66,12 @@
     methods: {
       async login() {
         try {
-          await this.$auth.loginWith('local', { data: this.loginInfo });
+          await this.$auth.loginWith('local', {data: this.loginInfo}).then(res => {
+            console.log(res.data.token)
+            Cookie.set('jwt', res.data.token);
+          });
           this.$router.push('/')
-        } catch(error) {
+        } catch (error) {
           console.log(error);
         }
       },
