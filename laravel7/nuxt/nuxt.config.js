@@ -36,7 +36,7 @@ export default {
   plugins: [
     '@/plugins/consts.js',
     '@/plugins/axios/index.js',
-    // { src: 'plugins/axios/index.js', ssr: false }
+    { src: 'plugins/axios.js', ssr: false }
   ],
   /*
    ** Nuxt.js dev-modules
@@ -51,27 +51,30 @@ export default {
     ['@nuxtjs/axios', {
       credentials: true
     }],
-    ['@nuxtjs/auth',{
-      strategies: {
-        local: { //自前の認証処理を実行する
-          endpoints: {
-            login: { //ログインを実行する際のリクエスト設定
-              url: '/login/', method: 'post', propertyName: false
-            },
-            logout: {　//ログアウトを実行する際のリクエスト設定
-              url: '/logout/', method: 'get'
-            },
-          },
-        },
-      },
-      localStorage: false
-    }]
+    '@nuxtjs/auth'
   ],
-  proxy: {
-    '/api': {
-      target: process.env.API_URL,
-      pathRewrite: {
-        '^/api': '/'
+  axios: {
+    host: 'http://poker.com',
+    port: 80,
+    proxy: true
+  },
+  proxy:{
+    '/api/': {target: 'http://poker.com/api/', pathRewrite: {'^/api/': '/'}}
+  },
+  auth: {
+    redirect: {
+      login: '/login',   // 未ログイン時に認証ルートへアクセスした際のリダイレクトURL
+      logout: '/login',  // ログアウト時のリダイレクトURL
+      callback: false,   // Oauth認証等で必要となる コールバックルート
+      home: false,         // ログイン後のリダイレクトURL
+    },
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: 'api/login', method: 'post', propertyName: 'token' },
+          user: { url: 'api/me', method: 'get', propertyName: false},
+          logout: false
+        },
       }
     }
   },

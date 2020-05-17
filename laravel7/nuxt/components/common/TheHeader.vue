@@ -9,14 +9,34 @@
       <v-toolbar-title>try-poker</v-toolbar-title>
       <v-spacer></v-spacer>
 <!--      <img class="l-Header-Logo" src="@/assets/logo_transparent.png">-->
-      <a href="./login">ログイン</a>
+      <div v-if="user">
+        <v-btn
+          @click="logout()"
+        >
+          ログアウト
+        </v-btn>
+      </div>
+      <div v-else>
+        <a href="/login">ログイン</a>
+
+      </div>
       <v-spacer></v-spacer>
     </v-toolbar>
   </v-card>
 </template>
 <script>
 export default {
-  name: 'TheHeader'
+  name: 'TheHeader',
+  computed: {
+    user() {
+      return this.$auth.user;
+    }
+  },
+  methods: {
+    logout() {
+      this.$auth.logout();
+    },
+  }
 }
 </script>
 

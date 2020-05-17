@@ -41,8 +41,6 @@
 
 <script>
   import {mapActions} from 'vuex'
-  import axios from 'axios'
-
   const Cookie = process.client ? require('js-cookie') : undefined;
   export default {
     data() {
@@ -65,15 +63,13 @@
       };
     },
     methods: {
-      login() {
-        axios.post('http://poker.com/api/login/',
-          this.loginInfo
-        ).then(res => {
-          Cookie.set('jwt', res.data.token);
+      async login() {
+        try {
+          await this.$auth.loginWith('local', { data: this.loginInfo });
           this.$router.push('/')
-        }).catch(error => {
-          alert('ログインに失敗しました。再度お試しください。')
-        });
+        } catch(error) {
+          console.log(error);
+        }
       },
       ...mapActions([
         'postLogin'
