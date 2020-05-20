@@ -67,8 +67,7 @@
       async login() {
         try {
           await this.$auth.loginWith('local', {data: this.loginInfo}).then(res => {
-            console.log(res.data.token)
-            Cookie.set('jwt', res.data.token);
+            localStorage.setItem('localstorage-jwt',res.data.token);
           });
           this.$router.push('/')
         } catch (error) {

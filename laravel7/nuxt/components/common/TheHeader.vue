@@ -38,7 +38,7 @@ export default {
   methods: {
     logout() {
       this.$auth.logout();
-      localStorage.removeItem('jwt')
+      localStorage.removeItem('localstorage-jwt')
     },
   }
 }

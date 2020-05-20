@@ -1,10 +1,8 @@
 import axios from 'axios'
 
-export default function({ $axios, redirect }) {
+export default function({ $axios }) {
   $axios.onRequest((config) => {
-    axios.defaults.headers.common['Authorization'] = localStorage.getItem(
-      'jwt'
-    )
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('localstorage-jwt');
     return config
   })
 
