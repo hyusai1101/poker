@@ -7,6 +7,9 @@ use App\Http\Requests\UpdateHandRangeRequest;
 use App\Libraries\ApiResponse;
 use App\Models\HandRange;
 use Exception;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use RuntimeException;
 
 class HandRangeController extends Controller
@@ -39,7 +42,9 @@ class HandRangeController extends Controller
     {
         $putBody = $request->json()->all();
 
+        Log::debug($putBody);
         $handRange = $handRange->find($putBody['id']);
+        Log::debug(Auth::user());
         try {
             $handRange->fill($putBody)->save();
         } catch (Exception $exception) {

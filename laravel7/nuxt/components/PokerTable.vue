@@ -12,7 +12,7 @@
           </v-list-item>
         </v-card>
 
-        <v-card class="mx-auto" max-width="150" height="75" @click="openModal(9)"style="left: 250px; bottom: 40px;">
+        <v-card class="mx-auto" max-width="150" height="75" @click="openModal(9)" style="left: 250px; bottom: 40px;">
           <v-list-item>
             <v-list-item-content>
               <v-list-item-title class="headline mb-1">CO</v-list-item-title>
@@ -48,7 +48,7 @@
           </v-list-item>
         </v-card>
 
-        <v-card class="mx-auto" max-width="150" height="75" @click="openModal(1)"style="bottom: 20px">
+        <v-card class="mx-auto" max-width="150" height="75" @click="openModal(1)" style="bottom: 20px">
           <v-list-item>
             <v-list-item-content>
               <v-list-item-title class="headline mb-1">BB</v-list-item-title>
@@ -85,6 +85,7 @@
 </template>
 <script>
   import axios from 'axios';
+
   const Cookie = process.client ? require('js-cookie') : undefined
   export default {
     name: "PokerTable",
@@ -109,13 +110,9 @@
         }
         hand.action = requestAction
         const baseUrl = 'http://poker.com/api/handRanges';
-        const token = 'Bearer ' + Cookie.get('jwt');
-        axios.put(baseUrl,{
-          headers: {
-            'Authorization': token
-          },
-          'id': handRangeId,
-          'action': requestAction
+        axios.put(baseUrl, {
+            'id': handRangeId,
+            'action': requestAction
         }).catch(error => {
           console.log(error);
           alert('ハンドレンジの変更に失敗しました。リロードして再度お試しください')
@@ -131,10 +128,10 @@
        * fixme モーダルの切替/多分ポジションごとにレンダリングするデータを切り替えないといけない
        * モーダルの外側をクリックされた時にhandrangeの中をクリアにする処理をいれる
        */
-      openModal(positionId){
-        if (this.dialog){
+      openModal(positionId) {
+        if (this.dialog) {
           this.dialog = false
-        }else{
+        } else {
           const baseUrl = 'http://poker.com/api/handRanges/' + positionId;
           axios.get(baseUrl).then(res => (
             this.handRanges = res.data.data
@@ -192,7 +189,7 @@
     background-color: #FDE47F;
   }
 
-  .hand-display li{
+  .hand-display li {
     display: inline;
   }
 

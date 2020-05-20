@@ -36,7 +36,7 @@ export default {
   plugins: [
     '@/plugins/consts.js',
     '@/plugins/axios/index.js',
-    { src: 'plugins/axios.js', ssr: false }
+    '@/plugins/axios.js'
   ],
   /*
    ** Nuxt.js dev-modules
