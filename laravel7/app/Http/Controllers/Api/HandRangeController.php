@@ -42,9 +42,7 @@ class HandRangeController extends Controller
     {
         $putBody = $request->json()->all();
 
-        Log::debug($putBody);
         $handRange = $handRange->find($putBody['id']);
-        Log::debug(Auth::user());
         try {
             $handRange->fill($putBody)->save();
         } catch (Exception $exception) {

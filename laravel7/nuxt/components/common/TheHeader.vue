@@ -1,31 +1,30 @@
 <template>
-  <v-card
-    color="grey lighten-4"
-    flat
-    tile
-  >
-    <v-toolbar>
-      <v-spacer></v-spacer>
-      <v-toolbar-title>try-poker</v-toolbar-title>
-      <v-spacer></v-spacer>
-<!--      <img class="l-Header-Logo" src="@/assets/logo_transparent.png">-->
-      <pre>
-        {{user}}
-      </pre>
-      <div v-if="user">
-        <v-btn
-          @click="logout()"
-        >
-          ログアウト
-        </v-btn>
-      </div>
-      <div v-else>
-        <a href="/login">ログイン</a>
+    <div>
+      <v-app-bar
+        absolute
+        color="gray"
+        dark
+      >
+        <v-toolbar-title>try-poker</v-toolbar-title>
 
-      </div>
-      <v-spacer></v-spacer>
-    </v-toolbar>
-  </v-card>
+        <div class="flex-grow-1"></div>
+        <div v-if="user">
+          <v-btn
+            @click="logout()"
+          >
+            ログアウト
+          </v-btn>
+        </div>
+        <div v-else>
+          <v-btn
+            @click="getLogin()"
+          >
+            ログイン
+          </v-btn>
+          <a href="/login"></a>
+        </div>
+      </v-app-bar>
+    </div>
 </template>
 <script>
 export default {
@@ -33,13 +32,20 @@ export default {
   computed: {
     user() {
       return this.$auth.user;
+    },
+    loggedIn() {
+      return this.$auth.loggedIn;
     }
   },
   methods: {
     logout() {
       this.$auth.logout();
-      localStorage.removeItem('localstorage-jwt')
+      localStorage.removeItem('localstorage-jwt');
+      this.$router.push('/');
     },
+    getLogin(){
+      this.$router.push('/login')
+    }
   }
 }
 </script>
