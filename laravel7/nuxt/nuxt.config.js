@@ -59,7 +59,7 @@ export default {
     proxy: true
   },
   proxy:{
-    '/api/': {target: 'http://poker.com/api/', pathRewrite: {'^/api/': '/'}}
+    '/api': {target: 'http://poker.com/api/', pathRewrite: {'^/api': '/'}}
   },
   auth: {
     redirect: {
