@@ -1,13 +1,15 @@
 <template>
   <div class="example">
-    <PokerTable />
+    <PokerTable
+      :BTNDialog="BTNDialog"
+      :CODialog="CODialog"
+      :MPDialog="MPDialog"
+      :UTGDialog="UTGDialog"
+      :SBDialog="SBDialog"
+      :BBDialog="BBDialog"
+    />
     <HandRangeDialog />
     {{getterHandRangeData}}
-    <v-btn
-      @click="test()"
-    >
-      ログイン
-    </v-btn>
   </div>
 </template>
 
@@ -23,7 +25,13 @@ export default {
   data() {
     return {
       handRanges: [],
-      dialog: false,
+      BTNDialog: false,
+      CODialog: false,
+      MPDialog: false,
+      UTGDialog: false,
+      SBDialog: false,
+      BBDialog: false,
+      test :'tttttaaa'
     };
   },
   computed: {
@@ -31,10 +39,13 @@ export default {
       'getterHandRangeData'
     ]),
   },
+  created () {
+      this.getHandRange()
+  },
   methods:{
     ...mapActions('api-hand-range', [
       'getHandRange'
-    ]),
+    ])
   }
 }
 </script>

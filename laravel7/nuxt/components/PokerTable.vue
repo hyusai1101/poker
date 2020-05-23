@@ -85,10 +85,29 @@
 </template>
 <script>
   import axios from 'axios';
-
   const Cookie = process.client ? require('js-cookie') : undefined
   export default {
     name: "PokerTable",
+    props: {
+      BTNDialog: {
+        type: Boolean,
+      },
+      CODialog: {
+        type: Boolean,
+      },
+      MPDialog: {
+        type: Boolean,
+      },
+      UTGDialog: {
+        type: Boolean,
+      },
+      SBDialog: {
+        type: Boolean,
+      },
+      BBDialog: {
+        type: Boolean,
+      },
+    },
     data() {
       return {
         handRanges: [],

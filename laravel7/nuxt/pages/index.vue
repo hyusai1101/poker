@@ -1,5 +1,5 @@
 <template>
-  <a @click="$router.push('/hand-range/6')">
+  <a @click="$router.push('/hand-range/6-max')">
     <v-card
       class="mx-auto"
       max-width="400"
