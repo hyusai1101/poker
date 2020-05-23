@@ -13,10 +13,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property integer $id
  * @property integer $userId
  * @property integer $tableTypeId
- * @property string $firstHand
- * @property string $secondHand
- * @property string $action
- * @property boolean $suited
+ * @property string $handInfo
  * @property Carbon $createdAt
  * @property Carbon $updatedAt
  */
@@ -26,6 +23,7 @@ class HandRange extends CommonModel
     protected $fillable = ['action'];
 
     protected $casts = [
+        'hand_info' => 'array',
         'suited' => 'boolean'
     ];
     /**

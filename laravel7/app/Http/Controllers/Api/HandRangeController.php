@@ -24,13 +24,10 @@ class HandRangeController extends Controller
         /**
          * fixme テーブルタイプとログインユーザーの処理が必要
          */
-        $handRanges = $handRange->where([['user_id', 1], ['table_type_id', 1], ['position_id', $positionId]])->get()->toArray();
-        $data = [];
-        foreach ($handRanges as $handRange) {
-            $data['"' . "{$handRange['firstHand']}" . '"'][] = $handRange;
-        }
+        $handRanges = $handRange->where([['user_id', 1], ['table_type_id', 1], ['hand_preset_id', 1]])->get()->toArray();
+
         return ((new ApiResponse())
-            ->setData($data)->format());
+            ->setData($handRanges)->format());
     }
 
     /**

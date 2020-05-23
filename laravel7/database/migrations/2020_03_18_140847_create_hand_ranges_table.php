@@ -19,10 +19,7 @@ class CreateHandRangesTable extends Migration
             $table->unsignedBigInteger('table_type_id');
             $table->unsignedBigInteger('position_id');
             $table->unsignedBigInteger('hand_preset_id');
-            $table->enum('first_hand',['A','2','3','4','5','6','7','8','9','T','J','Q','K']);
-            $table->enum('second_hand',['A','2','3','4','5','6','7','8','9','T','J','Q','K']);
-            $table->enum('action',['fold','call','raise','re_raise']);
-            $table->boolean('suited');
+            $table->text('hand_info');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('table_type_id')->references('id')->on('table_types');
