@@ -3,7 +3,8 @@
     <v-app id="inspire">
       <v-row justify="center">
         <span class="poker-table">
-        <v-card class="mx-auto" max-width="150" height="75" @click="openModal(10)" style="right: 250px; top: 35px">
+        <v-card class="mx-auto" max-width="150" height="75" @click="openModal('BTNDialog')"
+                style="right: 250px; top: 35px">
           <v-list-item>
             <v-list-item-content>
               <v-list-item-title class="headline mb-1">BTN</v-list-item-title>
@@ -12,7 +13,8 @@
           </v-list-item>
         </v-card>
 
-        <v-card class="mx-auto" max-width="150" height="75" @click="openModal(9)" style="left: 250px; bottom: 40px;">
+        <v-card class="mx-auto" max-width="150" height="75" @click="openModal('CODialog')"
+                style="left: 250px; bottom: 40px;">
           <v-list-item>
             <v-list-item-content>
               <v-list-item-title class="headline mb-1">CO</v-list-item-title>
@@ -21,7 +23,7 @@
           </v-list-item>
         </v-card>
 
-        <v-card class="mx-auto" max-width="150" height="75" @click="openModal(6)" style="bottom: 200px;">
+        <v-card class="mx-auto" max-width="150" height="75" @click="openModal('MPDialog')" style="bottom: 200px;">
           <v-list-item>
             <v-list-item-content>
               <v-list-item-title class="headline mb-1">MP</v-list-item-title>
@@ -30,7 +32,7 @@
           </v-list-item>
         </v-card>
 
-        <v-card class="mx-auto" max-width="150" height="75" @click="openModal(3)" style="left: 250px;">
+        <v-card class="mx-auto" max-width="150" height="75" @click="openModal('UTGDialog')" style="left: 250px;">
           <v-list-item>
             <v-list-item-content>
               <v-list-item-title class="headline mb-1">UTG</v-list-item-title>
@@ -39,7 +41,8 @@
           </v-list-item>
         </v-card>
 
-        <v-card class="mx-auto" max-width="150" height="75" @click="openModal(2)" style="right: 250px; bottom:70px;">
+        <v-card class="mx-auto" max-width="150" height="75" @click="openModal('SBDialog')"
+                style="right: 250px; bottom:70px;">
           <v-list-item>
             <v-list-item-content>
               <v-list-item-title class="headline mb-1">SB</v-list-item-title>
@@ -48,7 +51,7 @@
           </v-list-item>
         </v-card>
 
-        <v-card class="mx-auto" max-width="150" height="75" @click="openModal(1)" style="bottom: 20px">
+        <v-card class="mx-auto" max-width="150" height="75" @click="openModal('BBDialog')" style="bottom: 20px">
           <v-list-item>
             <v-list-item-content>
               <v-list-item-title class="headline mb-1">BB</v-list-item-title>
@@ -63,6 +66,7 @@
 </template>
 <script>
   import axios from 'axios';
+
   const Cookie = process.client ? require('js-cookie') : undefined
   export default {
     name: "PokerTable",
@@ -107,8 +111,8 @@
         hand.action = requestAction
         const baseUrl = 'http://poker.com/api/handRanges';
         axios.put(baseUrl, {
-            'id': handRangeId,
-            'action': requestAction
+          'id': handRangeId,
+          'action': requestAction
         }).catch(error => {
           console.log(error);
           alert('ハンドレンジの変更に失敗しました。リロードして再度お試しください')
@@ -121,19 +125,11 @@
         // });
       },
       /**
-       * fixme モーダルの切替/多分ポジションごとにレンダリングするデータを切り替えないといけない
-       * モーダルの外側をクリックされた時にhandrangeの中をクリアにする処理をいれる
+       * fixme modalのtrue,false問題を解決しないといけない
+       * ダイアログをページコンポーネントに戻す
        */
-      openModal(positionId) {
-        if (this.dialog) {
-          this.dialog = false
-        } else {
-          const baseUrl = 'http://poker.com/api/handRanges/' + positionId;
-          axios.get(baseUrl).then(res => (
-            this.handRanges = res.data.data
-          ))
-          this.dialog = true
-        }
+      openModal(positionDialog) {
+        this.$emit('clickDialog', positionDialog)
       }
     },
   };

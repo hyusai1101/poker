@@ -35,12 +35,6 @@
         type: Object,
       },
     },
-    data() {
-      return {
-        dialog: false,
-        handRange: []
-      };
-    },
     computed: {
       getHandInfo() {
         return this.handRanges['handInfo']
