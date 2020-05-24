@@ -8,8 +8,12 @@
       :SBDialog="SBDialog"
       :BBDialog="BBDialog"
     />
-    <HandRangeDialog />
-    {{getterHandRangeData}}
+    <div  v-if="getterHandRangeData">
+      <HandRangeDialog
+        :hand-ranges="getterHandRangeData[0]"
+        :dialog="BTNDialog"
+      />
+    </div>
   </div>
 </template>
 
@@ -24,14 +28,12 @@ export default {
   },
   data() {
     return {
-      handRanges: [],
       BTNDialog: false,
       CODialog: false,
       MPDialog: false,
       UTGDialog: false,
       SBDialog: false,
       BBDialog: false,
-      test :'tttttaaa'
     };
   },
   computed: {
