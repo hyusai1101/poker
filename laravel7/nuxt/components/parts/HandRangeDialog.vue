@@ -13,7 +13,7 @@
       <v-simple-table>
         <tbody>
         <tr v-for="handRange in getHandInfo">
-          <td v-for="hand in handRange" v-bind:class="hand.action" @click="test()">
+          <td v-for="hand in handRange" v-bind:class="hand.action" @click="updateHandRange(hand)">
             {{ hand.firstHand }}{{ hand.secondHand }}<span
             v-if="hand.suited">s</span><span v-else="hand.suited">o</span></td>
         </tr>
@@ -41,8 +41,34 @@
       },
     },
     methods:{
-      test() {
-        console.log('ページコンポーネントの実装')
+      updateHandRange(hand) {
+        let requestAction = '';
+        switch (hand.action) {
+          case 'fold':
+            requestAction = 'call';
+            break;
+          case 'call':
+            requestAction = 'raise';
+            break;
+          case 'raise':
+            requestAction = 're_raise';
+            break;
+          case 're_raise':
+            requestAction = 'fold';
+            break;
+          default:
+        }
+        hand.action = requestAction
+
+        // todo ページコンポーネントに渡す
+        // const baseUrl = 'http://poker.com/api/handRanges';
+        // axios.put(baseUrl, {
+        //   'id': handRangeId,
+        //   'action': requestAction
+        // }).catch(error => {
+        //   console.log(error);
+        //   alert('ハンドレンジの変更に失敗しました。リロードして再度お試しください')
+        // });
       }
     }
   };

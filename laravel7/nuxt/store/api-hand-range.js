@@ -1,6 +1,6 @@
 import axios from 'axios'
 // fixme apiを2/6/9の固定で作る。url設計を考え中
-const baseUrl = `${process.env.API_URL}/api/handRanges/6`
+const baseUrl = `${process.env.API_URL}/handRanges/6`
 export const state = () => ({
   handRange: []
 })
