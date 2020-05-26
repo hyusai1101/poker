@@ -49,9 +49,16 @@ class HandRangeController extends Controller
     {
         $putBody = $request->json()->all();
 
-        $handRange = $handRange->find($putBody['id']);
+        //TODO プリセット機能が実装されたらhand_preset_idの箇所を改修
+        $handRange = $handRange->where([
+            ['user_id',Auth::id()],
+            ['table_type_id',$putBody['table_type_id']],
+            ['position_id',$putBody['position_id']],
+            ['hand_preset_id',1]
+        ])->first();
         try {
-            $handRange->fill($putBody)->save();
+            $handRange->handInfo = $putBody['hand_info'];
+            $handRange->save();
         } catch (Exception $exception) {
             throw new RuntimeException('server error', 500);
         }

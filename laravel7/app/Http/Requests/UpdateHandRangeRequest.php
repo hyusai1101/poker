@@ -25,7 +25,9 @@ class UpdateHandRangeRequest extends FormRequest
     {
         return [
             'id' => 'required',
-            'action' => 'required|string'
+            'table_type_id' => 'required',
+            'position_id' => 'required',
+            'hand_info' => 'required'
         ];
     }
 }
