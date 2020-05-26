@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Libraries\Setup;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -53,6 +54,10 @@ class RegisterController extends CommonController
         $validator = $this->validator($request->all());
         if(!$validator->fails()){
             $user = $this->create($request->all());
+
+            $setup = new Setup();
+            $setup->defaultSeeding($user->id);
+
 
             $token = $this->auth->attempt($request->only( 'email', 'password'));
 

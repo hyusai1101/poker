@@ -29,6 +29,8 @@ class Setup
             [
                 'id' => $userId,
                 'name' => 'テストプリセット',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
         ]);
     }
