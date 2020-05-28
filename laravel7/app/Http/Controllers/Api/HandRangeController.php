@@ -26,16 +26,6 @@ class HandRangeController extends Controller
          */
         $handRanges = $handRange->where([['user_id', 1], ['table_type_id', 1], ['hand_preset_id', 1]])->get()->toArray();
 
-
-        // ハンドレンジを整形
-        foreach ($handRanges as $key => $handRange) {
-            $data = [];
-            foreach ($handRange['handInfo'] as $handInfo) {
-                $data['"' . "{$handInfo['firstHand']}" . '"'][] = $handInfo;
-            }
-            $handRanges[$key]['handInfo'] = $data;
-        }
-
         return ((new ApiResponse())
             ->setData($handRanges)->format());
     }
