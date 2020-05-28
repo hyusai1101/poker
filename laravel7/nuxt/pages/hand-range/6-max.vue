@@ -9,10 +9,11 @@
       :BBDialog="BBDialog"
       @clickDialog="getModal"
     />
-    <div  v-if="getterHandRangeData">
+    <div v-if="getterHandRangeData">
       <HandRangeDialog
         :hand-ranges="getterHandRangeData[0]"
         :dialog="BTNDialog"
+        @update="handRangeUpdate"
       />
       <HandRangeDialog
         :hand-ranges="getterHandRangeData[1]"
@@ -68,7 +69,8 @@ export default {
   },
   methods:{
     ...mapActions('api-hand-range', [
-      'getHandRange'
+      'getHandRange',
+      'putHandRange'
     ]),
     getModal(dialogName){
       switch (dialogName) {
@@ -92,6 +94,11 @@ export default {
           break;
       }
     },
+    handRangeUpdate(){
+      this.putHandRange(this.getterHandRangeData[0]).then((res)=>{
+        console.log(res)
+      })
+    }
   }
 }
 </script>

@@ -58,17 +58,8 @@
             break;
           default:
         }
-        hand.action = requestAction
-
-        // todo ページコンポーネントに渡す
-        // const baseUrl = 'http://poker.com/api/handRanges';
-        // axios.put(baseUrl, {
-        //   'id': handRangeId,
-        //   'action': requestAction
-        // }).catch(error => {
-        //   console.log(error);
-        //   alert('ハンドレンジの変更に失敗しました。リロードして再度お試しください')
-        // });
+        hand.action = requestAction;
+        this.$emit('update')
       }
     }
   };

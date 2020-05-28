@@ -96,34 +96,6 @@
       };
     },
     methods: {
-      update(handRangeId, action, hand) {
-        // fixme リクエストアクションはどっちで担保するか決めないといけない。
-        let requestAction = '';
-        if (action === 'fold') {
-          requestAction = 'call'
-        } else if (action === 'call') {
-          requestAction = 'raise'
-        } else if (action === 'raise') {
-          requestAction = 're_raise'
-        } else {
-          requestAction = 'fold'
-        }
-        hand.action = requestAction
-        const baseUrl = 'http://poker.com/api/handRanges';
-        axios.put(baseUrl, {
-          'id': handRangeId,
-          'action': requestAction
-        }).catch(error => {
-          console.log(error);
-          alert('ハンドレンジの変更に失敗しました。リロードして再度お試しください')
-        });
-
-        // axios.put(baseUrl, {
-        // }).catch(error => {
-        //   console.log(error);
-        //   alert('ハンドレンジの変更に失敗しました。リロードして再度お試しください')
-        // });
-      },
       /**
        * fixme modalのtrue,false問題を解決しないといけない
        * ダイアログをページコンポーネントに戻す

@@ -1,6 +1,6 @@
 import axios from 'axios'
 // fixme apiを2/6/9の固定で作る。url設計を考え中
-const baseUrl = `${process.env.API_URL}/handRanges/6`
+const baseUrl = `${process.env.API_URL}/handRanges`;
 export const state = () => ({
   handRange: []
 })
@@ -22,7 +22,7 @@ export const actions = {
    * @param {Function} commit
    */
   async getHandRange({commit}) {
-    await axios.get(baseUrl).then((res) => {
+    await axios.get(baseUrl + '/6').then((res) => {
       commit('setHandRangeToState', res.data)
     }).catch((error) => {
       commit('error-response/setErrorResponseToState', error.response, {root: true})
@@ -30,20 +30,20 @@ export const actions = {
     })
   },
   /**
-   * 会社情報の更新
+   * ハンドレンジの更新
    * @param {Function} commit
    * @param {Object}   payload
    */
-  // async putCompany({commit}, payload) {
-  //   await axios.put(baseUrl, payload.company, {
-  //     withCredentials: true
-  //   }).then((res) => {
-  //     commit('setCompanyToState', res.data)
-  //   }).catch((error) => {
-  //     commit('error-response/setErrorResponseToState', error.response, {root: true})
-  //     throw error
-  //   })
-  // },
+  async putHandRange({commit}, payload) {
+    console.log(payload);
+    console.log('store');
+    await axios.put(baseUrl, payload).then((res) => {
+      // commit('setCompanyToState', res.data)
+    }).catch((error) => {
+      // commit('error-response/setErrorResponseToState', error.response, {root: true})
+      throw error
+    })
+  },
   /**
    * 状態リセット系
    * @param {Function} commit
